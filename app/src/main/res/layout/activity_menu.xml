@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.vendetta.belajarlagi.MenuActivity">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Kategori"
+        android:id="@+id/btnkategori"
+        />
+    <Button
+        android:layout_below="@+id/btnkategori"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Customer"
+        android:id="@+id/btncustomer"
+        />
+    <Button
+        android:layout_below="@+id/btncustomer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pulsa"
+        android:id="@+id/btnnomor"
+        />
+    <Button
+        android:layout_below="@+id/btnnomor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pembelian"
+        android:id="@+id/btnpembelian"
+        />
+    <Button
+        android:layout_below="@+id/btnpembelian"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Kategori New"
+        android:id="@+id/btnkategorinew"
+        />
+
+</RelativeLayout>
