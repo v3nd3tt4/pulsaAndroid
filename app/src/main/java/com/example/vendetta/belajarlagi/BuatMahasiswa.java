@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 public class BuatMahasiswa extends AppCompatActivity {
     protected Cursor cursor;
-    DataHelper dbHelper;
+    DatabaseAdapter dbHelper;
     Button button1, button2;
     EditText text1, text2, text3, text4, text5;
 
@@ -21,7 +21,7 @@ public class BuatMahasiswa extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buat_mahasiswa);
 
-        dbHelper = new DataHelper(this);
+        dbHelper = new DatabaseAdapter(this);
         text1 = (EditText) findViewById(R.id.editText1);
         text2 = (EditText) findViewById(R.id.editText2);
         text3 = (EditText) findViewById(R.id.editText3);
