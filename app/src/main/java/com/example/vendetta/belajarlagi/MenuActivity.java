@@ -8,6 +8,7 @@ import android.widget.Button;
 
 public class MenuActivity extends AppCompatActivity {
 
+    public static MainActivity ma;
     private Button bkategori;
     private Button bbeli;
     @Override

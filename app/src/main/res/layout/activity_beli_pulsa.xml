@@ -112,10 +112,10 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/txtTglStatus"
-            android:id="@+id/edTglStatus"
+            android:id="@+id/edStatus"
             />
         <TextView
-            android:layout_below="@id/edTglStatus"
+            android:layout_below="@id/edStatus"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Kategori"
