@@ -28,7 +28,7 @@ public class MenuActivity extends AppCompatActivity {
         bbeli.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), BeliPulsa1.class);
+                Intent i = new Intent(getApplicationContext(), ListPulsa.class);
                 startActivity(i);
             }
         });

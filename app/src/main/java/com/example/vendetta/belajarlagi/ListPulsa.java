@@ -1,0 +1,99 @@
+package com.example.vendetta.belajarlagi;
+
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.Toast;
+
+public class ListPulsa extends AppCompatActivity {
+
+
+    private Button bTambah;
+    String[] daftar;
+    ListView listPembelian01;
+    protected Cursor cursor;
+    DatabaseAdapter dbHelper;
+    public static ListPulsa ma;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_list_pulsa);
+
+        bTambah = (Button)findViewById(R.id.bTambahPembelian);
+        bTambah.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), BeliPulsa1.class);
+                startActivity(i);
+            }
+        });
+
+        ma = this;
+        dbHelper = new DatabaseAdapter(this);
+        RefreshList();
+    }
+
+    public void RefreshList(){
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        cursor = db.rawQuery("SELECT * FROM tb_pembelian order by id_pembelian DESC",null);
+        daftar = new String[cursor.getCount()];
+
+        cursor.moveToFirst();
+        final String sfaf[] = new String[cursor.getCount()];
+        for (int cc=0; cc < cursor.getCount(); cc++){
+            cursor.moveToPosition(cc);
+            sfaf[cc] = cursor.getString(0).toString();
+            daftar[cc] = cursor.getString(2).toString()+"\n"+cursor.getString(1).toString();
+        }
+        listPembelian01 = (ListView)findViewById(R.id.listPembelian);
+        listPembelian01.setAdapter(new ArrayAdapter(this, android.R.layout.simple_list_item_1, daftar));
+        listPembelian01.setSelected(true);
+        listPembelian01.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            public void onItemClick(AdapterView arg0, View arg1, int arg2, long arg3) {
+                //final String selection = daftar[arg2]; //.getItemAtPosition(arg2).toString();
+                //final String id_pembelian = ;
+                final String selection = sfaf[arg2];
+                //Toast.makeText(getApplicationContext(),sfaf[arg2], Toast.LENGTH_SHORT).show();
+                final CharSequence[] dialogitem = {"Lihat", "Update", "Hapus"};
+                AlertDialog.Builder builder = new AlertDialog.Builder(ListPulsa.this);
+                builder.setTitle("Pilihan");
+                builder.setItems(dialogitem, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int item) {
+                        switch(item){
+                            case 0 :
+                                Intent i = new Intent(getApplicationContext(), LihatMahasiswa.class);
+                                i.putExtra("nama", selection);
+                                startActivity(i);
+                                break;
+                            case 1 :
+                                Intent in = new Intent(getApplicationContext(), UbahMahasiswa.class);
+                                in.putExtra("nama", selection);
+                                startActivity(in);
+                                break;
+                            case 2 :
+                                SQLiteDatabase db = dbHelper.getWritableDatabase();
+                                db.execSQL("delete from tb_pembelian where id_pembelian = '"+selection+"'");
+                                Toast.makeText(getApplicationContext(), "Berhasil Dihapus", Toast.LENGTH_LONG).show();
+                                RefreshList();
+                                break;
+                        }
+                    }
+                });
+                builder.create().show();
+            }});
+        ((ArrayAdapter)listPembelian01.getAdapter()).notifyDataSetInvalidated();
+    }
+
+}

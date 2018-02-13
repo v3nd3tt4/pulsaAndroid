@@ -61,7 +61,7 @@ public class BeliPulsa1 extends AppCompatActivity {
                             skategori + "','" +
                             sstatus + "')");
                     Toast.makeText(getApplicationContext(), "Berhasil Disimpan", Toast.LENGTH_LONG).show();
-                    //MenuActivity.ma.RefreshList();
+                    ListPulsa.ma.RefreshList();
                     finish();
                 }
             }

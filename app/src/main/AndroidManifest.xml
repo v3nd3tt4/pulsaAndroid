@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.vendetta.belajarlagi">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -23,7 +23,8 @@
         <activity android:name=".LihatMahasiswa" />
         <activity android:name=".BuatMahasiswa" />
         <activity android:name=".UbahMahasiswa" />
-        <activity android:name=".BeliPulsa1"></activity>
+        <activity android:name=".BeliPulsa1" />
+        <activity android:name=".ListPulsa"></activity>
     </application>
 
 </manifest>
