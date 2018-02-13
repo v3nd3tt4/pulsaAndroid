@@ -27,7 +27,7 @@ public class LihatMahasiswa extends AppCompatActivity {
         text4 = (TextView) findViewById(R.id.textView4);
         text5 = (TextView) findViewById(R.id.textView5);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        cursor = db.rawQuery("SELECT * FROM mahasiswa WHERE nama = '" +
+        cursor = db.rawQuery("SELECT * FROM tb_pembelian WHERE id_pembelian = '" +
                 getIntent().getStringExtra("nama") + "'",null);
         cursor.moveToFirst();
         if (cursor.getCount()>0)

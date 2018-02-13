@@ -51,10 +51,12 @@ public class ListPulsa extends AppCompatActivity {
 
         cursor.moveToFirst();
         final String sfaf[] = new String[cursor.getCount()];
+        int nomor=1;
         for (int cc=0; cc < cursor.getCount(); cc++){
             cursor.moveToPosition(cc);
             sfaf[cc] = cursor.getString(0).toString();
-            daftar[cc] = cursor.getString(2).toString()+"\n"+cursor.getString(1).toString();
+            daftar[cc] = nomor+". "+cursor.getString(2).toString()+"\n    "+cursor.getString(1).toString();
+            nomor++;
         }
         listPembelian01 = (ListView)findViewById(R.id.listPembelian);
         listPembelian01.setAdapter(new ArrayAdapter(this, android.R.layout.simple_list_item_1, daftar));
@@ -73,13 +75,13 @@ public class ListPulsa extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int item) {
                         switch(item){
                             case 0 :
-                                Intent i = new Intent(getApplicationContext(), LihatMahasiswa.class);
-                                i.putExtra("nama", selection);
+                                Intent i = new Intent(getApplicationContext(), ListPembelian.class);
+                                i.putExtra("id_pembelian", selection);
                                 startActivity(i);
                                 break;
                             case 1 :
                                 Intent in = new Intent(getApplicationContext(), UbahMahasiswa.class);
-                                in.putExtra("nama", selection);
+                                in.putExtra("id_pembelian", selection);
                                 startActivity(in);
                                 break;
                             case 2 :

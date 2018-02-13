@@ -27,7 +27,7 @@ public class BeliPulsa1 extends AppCompatActivity {
         harga_jual = (EditText) findViewById(R.id.edJual);
         tgl_beli = (EditText) findViewById(R.id.edTglBeli);
         tgl_bayar = (EditText) findViewById(R.id.edTglBayar);
-        status = (EditText) findViewById(R.id.edKategori);
+        status = (EditText) findViewById(R.id.edStatus);
         kategori = (EditText) findViewById(R.id.edKategori);
         simpan = (Button) findViewById(R.id.bSimpan);
 
