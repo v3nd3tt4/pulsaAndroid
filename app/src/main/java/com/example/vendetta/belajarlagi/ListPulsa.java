@@ -15,6 +15,9 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class ListPulsa extends AppCompatActivity {
 
 
@@ -68,7 +71,7 @@ public class ListPulsa extends AppCompatActivity {
                 //final String id_pembelian = ;
                 final String selection = sfaf[arg2];
                 //Toast.makeText(getApplicationContext(),sfaf[arg2], Toast.LENGTH_SHORT).show();
-                final CharSequence[] dialogitem = {"Lihat", "Update", "Hapus"};
+                final CharSequence[] dialogitem = {"Lihat", "Hapus", "Lunas"};
                 AlertDialog.Builder builder = new AlertDialog.Builder(ListPulsa.this);
                 builder.setTitle("Pilihan");
                 builder.setItems(dialogitem, new DialogInterface.OnClickListener() {
@@ -85,9 +88,13 @@ public class ListPulsa extends AppCompatActivity {
                                 startActivity(in);
                                 break;
                             case 2 :
+                                Calendar calendar = Calendar.getInstance();
+                                SimpleDateFormat mdformat = new SimpleDateFormat("yyyy-MM-dd ");
+                                String strDate = mdformat.format(calendar.getTime());
+
                                 SQLiteDatabase db = dbHelper.getWritableDatabase();
-                                db.execSQL("delete from tb_pembelian where id_pembelian = '"+selection+"'");
-                                Toast.makeText(getApplicationContext(), "Berhasil Dihapus", Toast.LENGTH_LONG).show();
+                                db.execSQL("update tb_pembelian set status = 'lunas', tgl_bayar = '"+strDate+"' where id_pembelian = '"+selection+"'");
+                                Toast.makeText(getApplicationContext(), "Berhasil Dibayar", Toast.LENGTH_LONG).show();
                                 RefreshList();
                                 break;
                         }
