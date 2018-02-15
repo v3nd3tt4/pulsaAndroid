@@ -10,7 +10,8 @@ public class MenuActivity extends AppCompatActivity {
 
     public static MainActivity ma;
     private Button bkategori;
-    private Button bbeli, bbelumbayar;
+    private Button bbeli;
+    private Button bbelumbayar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +38,7 @@ public class MenuActivity extends AppCompatActivity {
         bbelumbayar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), ListPulsa.class);
+                Intent i = new Intent(getApplicationContext(), BelumLunas.class);
                 startActivity(i);
             }
         });

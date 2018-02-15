@@ -9,20 +9,19 @@
     android:background="#ecf0f1"
     tools:context=".ListPulsa" >
 
-    <Button
-        android:id="@+id/bTambahPembelian"
+    <TextView
+        android:id="@+id/tbelumlunas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         style="?android:attr/borderlessButtonStyle"
-        android:drawableLeft="@drawable/ic_control_point_black_24dp"
-        android:text="Tambah Pembelian" />
+        android:text="Belum Lunas" />
 
     <ListView
-        android:id="@+id/listPembelian"
+        android:id="@+id/listBelumLunas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/bTambahPembelian"
+        android:layout_below="@+id/tbelumlunas"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:background="#fff">

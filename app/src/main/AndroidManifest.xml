@@ -25,7 +25,8 @@
         <activity android:name=".UbahMahasiswa" />
         <activity android:name=".BeliPulsa1" />
         <activity android:name=".ListPulsa" />
-        <activity android:name=".ListPembelian"></activity>
+        <activity android:name=".ListPembelian" />
+        <activity android:name=".BelumLunas"></activity>
     </application>
 
 </manifest>

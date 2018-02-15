@@ -44,7 +44,7 @@
         android:layout_below="@+id/btnkategorinew"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Kategori New"
+        android:text="Belum Bayar"
         android:id="@+id/btnbelumbayar"
         />
 
