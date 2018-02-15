@@ -26,8 +26,6 @@ public class BeliPulsa1 extends AppCompatActivity {
         modal = (EditText) findViewById(R.id.edModal);
         harga_jual = (EditText) findViewById(R.id.edJual);
         tgl_beli = (EditText) findViewById(R.id.edTglBeli);
-        tgl_bayar = (EditText) findViewById(R.id.edTglBayar);
-        status = (EditText) findViewById(R.id.edStatus);
         kategori = (EditText) findViewById(R.id.edKategori);
         simpan = (Button) findViewById(R.id.bSimpan);
 
@@ -42,12 +40,10 @@ public class BeliPulsa1 extends AppCompatActivity {
                 smodal = modal.getText().toString();
                 shargajual = harga_jual.getText().toString();
                 stglbeli = tgl_beli.getText().toString();
-                stglbayar = tgl_bayar.getText().toString();
                 skategori = kategori.getText().toString();
-                sstatus = status.getText().toString();
 
                 if ( snomor.equals("") || snama.equals("") || smodal.equals("") || shargajual.equals("")
-                        || stglbeli.equals("") || stglbayar.equals("") || skategori.equals("") || sstatus.equals("")){
+                        || stglbeli.equals("")  || skategori.equals("") ){
                     Toast.makeText(BeliPulsa1.this,"Semua Data Harus Diisi!", Toast.LENGTH_SHORT ).show();
                 }else{
                     SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -56,10 +52,8 @@ public class BeliPulsa1 extends AppCompatActivity {
                             snama + "','" +
                             smodal + "','" +
                             shargajual + "','" +
-                            stglbeli + "','" +
-                            stglbayar + "','" +
-                            skategori + "','" +
-                            sstatus + "')");
+                            stglbeli + "','0000-00-00','" +
+                            skategori + "','belum lunas')");
                     Toast.makeText(getApplicationContext(), "Berhasil Disimpan", Toast.LENGTH_LONG).show();
                     ListPulsa.ma.RefreshList();
                     finish();
