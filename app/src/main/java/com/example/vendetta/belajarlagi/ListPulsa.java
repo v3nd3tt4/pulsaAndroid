@@ -92,7 +92,7 @@ public class ListPulsa extends AppCompatActivity
     }
 
     public  void TampilDialog(final String s){
-        final CharSequence[] dialogitem = {"Lihat", "Hapus", "Lunas"};
+        final CharSequence[] dialogitem = {"Lihat", "Hapus", "Lunas", "Belum Lunas"};
         AlertDialog.Builder builder = new AlertDialog.Builder(ListPulsa.this);
         builder.setTitle("Pilihan");
         builder.setItems(dialogitem, new DialogInterface.OnClickListener() {
@@ -116,6 +116,15 @@ public class ListPulsa extends AppCompatActivity
                         db = dbHelper.getWritableDatabase();
                         db.execSQL("update tb_pembelian set status = 'lunas', tgl_bayar = '"+strDate+"' where id_pembelian = '"+s+"'");
                         Toast.makeText(getApplicationContext(), "Berhasil Dibayar", Toast.LENGTH_LONG).show();
+                        RefreshList();
+                        break;
+                    case 3 :
+                        calendar = Calendar.getInstance();
+                        mdformat = new SimpleDateFormat("yyyy-MM-dd ");
+                        strDate = mdformat.format(calendar.getTime());
+                        db = dbHelper.getWritableDatabase();
+                        db.execSQL("update tb_pembelian set status = 'belum lunas', tgl_bayar = '"+strDate+"' where id_pembelian = '"+s+"'");
+                        Toast.makeText(getApplicationContext(), "Berhasil Diset Belum Lunas", Toast.LENGTH_LONG).show();
                         RefreshList();
                         break;
                 }

@@ -40,5 +40,12 @@
         android:text="Kategori New"
         android:id="@+id/btnkategorinew"
         />
+    <Button
+        android:layout_below="@+id/btnkategorinew"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Kategori New"
+        android:id="@+id/btnbelumbayar"
+        />
 
 </RelativeLayout>
