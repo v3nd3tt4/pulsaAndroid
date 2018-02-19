@@ -5,22 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.vendetta.belajarlagi.MenuActivity">
-    <GridView
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        android:id="@+id/gridview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:columnWidth="150dp"
-        android:background="#f2f2f2"
-        android:numColumns="auto_fit"
-        android:verticalSpacing="10dp"
-        android:horizontalSpacing="0dp"
-        android:stretchMode="spacingWidthUniform"
-        />
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,5 +19,21 @@
         android:layout_height="wrap_content"
         android:text="Belum Bayar"
         android:id="@+id/btnbelumbayar"
+        />
+    <GridView
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/gridview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:columnWidth="100dp"
+        android:numColumns="auto_fit"
+        android:verticalSpacing="10dp"
+        android:horizontalSpacing="0dp"
+        android:stretchMode="spacingWidthUniform"
+        android:layout_below="@+id/btnbelumbayar"
         />
 </RelativeLayout>

@@ -12,7 +12,7 @@
         android:id="@+id/textview_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
+        android:textSize="18sp"
         tools:text="Nilai"
         android:textStyle="bold"
         android:paddingTop="2dp"
@@ -24,7 +24,7 @@
         android:id="@+id/textview_author"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
+        android:textSize="12sp"
         tools:text="Status"
         android:gravity="center_horizontal"/>
 
