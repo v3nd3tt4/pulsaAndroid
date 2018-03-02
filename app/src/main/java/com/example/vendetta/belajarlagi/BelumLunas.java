@@ -55,7 +55,7 @@ public class BelumLunas extends AppCompatActivity {
     public void RefreshList() {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         cursor = db.rawQuery("SELECT * FROM tb_pembelian " +
-                "where status = 'belum lunas'  order by id_pembelian DESC", null);
+                "where status = 'belum lunas'  order by nama ASC", null);
         daftar = new String[cursor.getCount()];
 
         cursor.moveToFirst();

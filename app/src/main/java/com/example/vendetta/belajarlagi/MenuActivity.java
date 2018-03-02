@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 public class MenuActivity extends AppCompatActivity {
 
     public static MainActivity ma;
@@ -19,7 +22,11 @@ public class MenuActivity extends AppCompatActivity {
     private Button bbelumbayar;
     protected Cursor cursor;
     private String sKeuntungan;
+    private  String sPiutang;
+    private  String sTransaksi;
+    private  String sCountTransaksi;
     DatabaseAdapter dbHelper;
+    DecimalFormat formatter = new DecimalFormat("#,###,###");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +43,9 @@ public class MenuActivity extends AppCompatActivity {
 
 
         getKeuntungan();
+        getPiutang();
+        getTransaksi();
+        getCountTransaksi();
         bbeli = (Button)findViewById(R.id.btnpembelian);
         bbeli.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,13 +68,12 @@ public class MenuActivity extends AppCompatActivity {
         GridView gridView = findViewById(R.id.gridview);
         final GridAdapter gridAdapter = new GridAdapter(this, new GridFunction[] {
                 new GridFunction("Rp. "+sKeuntungan, "Keuntungan"),
-                new GridFunction("Rp. 30000", "Piutang"),
-                new GridFunction("Rp. 25000", "Total Transaksi")
+                new GridFunction("Rp. "+sPiutang, "Piutang"),
+                new GridFunction("Rp. "+sTransaksi, "Total Transaksi"),
+                new GridFunction(sCountTransaksi, "Total Transaksi")
 
         }  );
         gridView.setAdapter(gridAdapter);
-
-
     }
 
     public void getKeuntungan(){
@@ -77,8 +86,34 @@ public class MenuActivity extends AppCompatActivity {
         }
     }
 
-    public  Integer getPiutang(){
-        return 1;
+    public  void getPiutang(){
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        cursor = db.rawQuery("SELECT sum(modal) FROM tb_pembelian where status = 'belum lunas'", null);
+        cursor.moveToFirst();
+        if(cursor.getCount() > 0) {
+            cursor.moveToPosition(0);
+            sPiutang = cursor.getString(0).toString();
+        }
+    }
+
+    public  void getTransaksi(){
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        cursor = db.rawQuery("SELECT sum(modal) FROM tb_pembelian", null);
+        cursor.moveToFirst();
+        if(cursor.getCount() > 0) {
+            cursor.moveToPosition(0);
+            sTransaksi = cursor.getString(0).toString();
+        }
+    }
+
+    public  void getCountTransaksi(){
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        cursor = db.rawQuery("SELECT count(*) FROM tb_pembelian", null);
+        cursor.moveToFirst();
+        if(cursor.getCount() > 0) {
+            cursor.moveToPosition(0);
+            sCountTransaksi = cursor.getString(0).toString();
+        }
     }
 
 }
